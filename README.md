@@ -2,7 +2,7 @@
 
 Jogo da pizzaria maluca implementa com tipos abstratos Fila, Lista e Pilha para a aula de Estrutura de Dados.
 
-2 a 6 jogadores
+2 a 5 jogadores
 
 1 pizza precisa de 5 ingredientes
 
@@ -20,12 +20,8 @@ Pizzas
 - Marguerita { calabresa, brócolis, tomate, queijo, milho }
 
 
-Sorte ou azar
-- Roube um ingrediente de outro jogador (Sorte) x5
-- Pege um ingrediente de sua escolha (Sorte) x5
-- Retire um ingrediente de outro jogador (Sorte) x5
-- Passe a vez (Azar) x5
-- Fique sem jogar por 2 rodada (Azar) x5
-- Perca um ingrediente aleatório (Azar) x5
-- Sua pizza queimou, perca todos os ingredientes (Azar) x5
-- Jogo os dados novamente (Sorte) x5
+Sorte ou azar (20)
+- Perder um ingrediente. x5
+- Ganhar dois ingredientes. x5
+- Retirar um ingrediente de um outro jogador. x5
+- Queimar a pizza (perder todos os ingredientes). x5
