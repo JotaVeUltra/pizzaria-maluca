@@ -8,6 +8,8 @@ public class PizzariaMaluca extends JFrame implements ActionListener{
 
     static Jogadores jogadores;
     static Tabuleiro tabuleiro = new Tabuleiro();
+    static Monte monte = new Monte();
+    static int pino = 0;
 
     PizzariaMaluca(){
         super("Pizzaria Maluca");
