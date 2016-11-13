@@ -72,7 +72,7 @@ public class Tabuleiro {
     // Move para a posição indicada
     public void moveParaPosicao(int pos) {
         atual = primeiro;
-        for (int i=1; i<pos; i++) {
+        for (int i=0; i<pos; i++) {
             atual = atual.proximo;
         }
     }
