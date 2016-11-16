@@ -50,19 +50,19 @@ public class Monte {
         int f = desempilha();
         switch (f){
             case Ficha.PERDE_INGREDIENTE:
-                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar eperdeu ingrediente");
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar, perdeu ingrediente");
                 perdeIngrediente(jogador);
                 break;
             case Ficha.GANHA_DOIS_INGREDIENTES:
-                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte e ganhou dois ingredientes");
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte, ganhou dois ingredientes");
                 ganhaDoisIngredientes(jogador);
                 break;
             case Ficha.RETIRE_DE_OUTRO_JOGADOR:
-                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte e retirou ingredientes");
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte, retirou ingredientes");
                 retiraDeOutroJogador(jogador);
                 break;
             case Ficha.QUEIMAR_A_PIZZA:
-                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar e queimou a pizza");
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar, queimou a pizza");
                 queimarPizza(jogador);
                 break;
         }
@@ -104,7 +104,7 @@ public class Monte {
     void retiraDeOutroJogador(Jogador jogador) {
         boolean retirou = false;
         while (!retirou) {
-            String nome = JOptionPane.showInputDialog("De qual jogador deseja retirar ingredientes?");
+            String nome = JOptionPane.showInputDialog(jogador.nome+", de qual jogador deseja retirar ingredientes?");
             Jogador tempJ = Principal.jogadores.primeiro;
             for (int i = 0; i < Principal.numeroJogadores; i++) {
                 if (tempJ.nome.equalsIgnoreCase(nome)) {
@@ -113,6 +113,7 @@ public class Monte {
                     Principal.lblInfo.setText(Principal.lblInfo.getText()+" "+nome);
                     break;
                 }
+                tempJ = tempJ.proximo;
             }
         }
     }

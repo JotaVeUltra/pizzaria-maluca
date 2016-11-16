@@ -26,6 +26,7 @@ public class Principal extends Shell {
     private Text txtIng4;
     private Text txtIng5;
     private Button btnJogaDados;
+    Button btnStart;
     static Label lblInfo;
 
     public Principal(Display display) {
@@ -36,53 +37,55 @@ public class Principal extends Shell {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 int nj = 0;
-                while (nj < 2 || nj > 5) {
-                    nj = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de jogadores 2-5"));
+                try {
+                    while (nj < 2 || nj > 5) {
+                        nj = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de jogadores 2-5"));
+                    }
+                    if (nj == 2) {
+                        txtJogador1.setEditable(true);
+                        txtJogador1.setText("");
+                        txtJogador2.setEditable(true);
+                        txtJogador2.setText("");
+                        numeroJogadores = 2;
+                    }
+                    if (nj == 3) {
+                        txtJogador1.setEditable(true);
+                        txtJogador1.setText("");
+                        txtJogador2.setEditable(true);
+                        txtJogador2.setText("");
+                        txtJogador3.setEditable(true);
+                        txtJogador3.setText("");
+                        numeroJogadores = 3;
+                    }
+                    if (nj == 4) {
+                        txtJogador1.setEditable(true);
+                        txtJogador1.setText("");
+                        txtJogador2.setEditable(true);
+                        txtJogador2.setText("");
+                        txtJogador3.setEditable(true);
+                        txtJogador3.setText("");
+                        txtJogador4.setEditable(true);
+                        txtJogador4.setText("");
+                        numeroJogadores = 4;
+                    }
+                    if (nj == 5) {
+                        txtJogador1.setEditable(true);
+                        txtJogador1.setText("");
+                        txtJogador2.setEditable(true);
+                        txtJogador2.setText("");
+                        txtJogador3.setEditable(true);
+                        txtJogador3.setText("");
+                        txtJogador4.setEditable(true);
+                        txtJogador4.setText("");
+                        txtJogador5.setEditable(true);
+                        txtJogador5.setText("");
+                        numeroJogadores = 5;
+                    }
+                    lblInfo.setText("Insira o nome dos jogaderes nos campos vazios");
+                    btnStart.setVisible(true);
+                } catch (Exception x) {
+                    x.printStackTrace();
                 }
-                if (nj == 2) {
-                    txtJogador1.setEditable(true);
-                    txtJogador1.setText("");
-                    txtJogador2.setEditable(true);
-                    txtJogador2.setText("");
-                    numeroJogadores = 2;
-                }
-
-                if (nj == 3) {
-                    txtJogador1.setEditable(true);
-                    txtJogador1.setText("");
-                    txtJogador2.setEditable(true);
-                    txtJogador2.setText("");
-                    txtJogador3.setEditable(true);
-                    txtJogador3.setText("");
-                    numeroJogadores = 3;
-                }
-
-                if (nj == 4) {
-                    txtJogador1.setEditable(true);
-                    txtJogador1.setText("");
-                    txtJogador2.setEditable(true);
-                    txtJogador2.setText("");
-                    txtJogador3.setEditable(true);
-                    txtJogador3.setText("");
-                    txtJogador4.setEditable(true);
-                    txtJogador4.setText("");
-                    numeroJogadores = 4;
-                }
-
-                if (nj == 5) {
-                    txtJogador1.setEditable(true);
-                    txtJogador1.setText("");
-                    txtJogador2.setEditable(true);
-                    txtJogador2.setText("");
-                    txtJogador3.setEditable(true);
-                    txtJogador3.setText("");
-                    txtJogador4.setEditable(true);
-                    txtJogador4.setText("");
-                    txtJogador5.setEditable(true);
-                    txtJogador5.setText("");
-                    numeroJogadores = 5;
-                }
-
             }
         });
         btnNovoJogo.setBounds(411, 8, 95, 25);
@@ -133,23 +136,31 @@ public class Principal extends Shell {
         txtIng3.setEditable(false);
         txtIng3.setBounds(79, 64, 326, 21);
 
-        Button btnStart = new Button(this, SWT.NONE);
+        btnStart = new Button(this, SWT.NONE);
         btnStart.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                txtJogador1.setEditable(false);
-                txtJogador2.setEditable(false);
-                txtJogador3.setEditable(false);
-                txtJogador4.setEditable(false);
-                txtJogador5.setEditable(false);
-
-                jogadores = new Jogadores(numeroJogadores);
-                jogadores.atual = jogadores.primeiro;
-                preencheTexto();
+                if (!(txtJogador1.getText().equals("") ||
+                        txtJogador2.getText().equals("") ||
+                        txtJogador3.getText().equals("") ||
+                        txtJogador4.getText().equals("") ||
+                        txtJogador5.getText().equals(""))) {
+                    txtJogador1.setEditable(false);
+                    txtJogador2.setEditable(false);
+                    txtJogador3.setEditable(false);
+                    txtJogador4.setEditable(false);
+                    txtJogador5.setEditable(false);
+                    jogadores = new Jogadores(numeroJogadores);
+                    jogadores.atual = jogadores.primeiro;
+                    preencheTexto();
+                    btnStart.setVisible(false);
+                    btnJogaDados.setVisible(true);
+                }
             }
         });
         btnStart.setBounds(202, 185, 75, 25);
         btnStart.setText("START");
+        btnStart.setVisible(false);
 
         btnJogaDados = new Button(this, SWT.NONE);
         btnJogaDados.addSelectionListener(new SelectionAdapter() {
@@ -172,6 +183,7 @@ public class Principal extends Shell {
                 }
                 if (jogadores.atual.pizza.tamanho() == 0) {
                     Principal.lblInfo.setText(Principal.lblInfo.getText()+" e venceu!");
+                    btnJogaDados.setVisible(false);
                 }
                 if (monte.estaVazio()) {
                     monte = new Monte();
@@ -182,6 +194,7 @@ public class Principal extends Shell {
         });
         btnJogaDados.setBounds(411, 39, 95, 25);
         btnJogaDados.setText("Joga Dados");
+        btnJogaDados.setVisible(false);
 
         lblInfo = new Label(this, SWT.NONE);
         lblInfo.setAlignment(SWT.CENTER);
