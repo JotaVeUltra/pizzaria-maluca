@@ -164,6 +164,7 @@ public class Principal extends Shell {
 				
 				jogadores = new Jogadores(numeroJogadores);
                 jogadores.atual = jogadores.primeiro;
+                preencheTexto();
 			}
 		});
 		btnStart.setBounds(158, 189, 75, 25);
@@ -185,7 +186,12 @@ public class Principal extends Shell {
                         jogadores.atual.pizza.removeIngrediente(tabuleiro.atual.tipo);
                     }
                 }
+                if (jogadores.atual.pizza.tamanho() == 0) {
+                    String str = jogadores.atual.nome  +" venceu!";
+                    JOptionPane.showMessageDialog(null, str);
+                }
                 jogadores.atual = jogadores.atual.proximo;
+                preencheTexto();
 			}
 		});
 		btnJogaDados.setBounds(349, 37, 75, 25);
@@ -202,9 +208,23 @@ public class Principal extends Shell {
 
 	}
 	
-	public void preencheTexto(Jogador jogador) {
-		jogador.pizza = new Pizza(jogador.pizza.tipo);
-		txtIng1.setText(jogador.pizza.toString());
+	public void preencheTexto() {
+        Jogador tempJ = jogadores.primeiro;
+		txtIng1.setText(tempJ.pizza.toString());
+        tempJ = tempJ.proximo;
+        txtIng2.setText(tempJ.pizza.toString());
+        if (numeroJogadores > 2) {
+            tempJ = tempJ.proximo;
+            txtIng3.setText(tempJ.pizza.toString());
+        }
+        if (numeroJogadores > 3) {
+            tempJ = tempJ.proximo;
+            txtIng4.setText(tempJ.pizza.toString());
+        }
+        if (numeroJogadores > 4) {
+            tempJ = tempJ.proximo;
+            txtIng5.setText(tempJ.pizza.toString());
+        }
 	}
 
 	@Override
@@ -212,7 +232,4 @@ public class Principal extends Shell {
 		// Disable the check that prevents subclassing of SWT components
 	}
 
-	public void nomeiaJogador() {
-
-	}
 }
