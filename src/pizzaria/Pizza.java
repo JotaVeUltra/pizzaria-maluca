@@ -1,8 +1,9 @@
 package pizzaria;
 
 public class Pizza {
-    private Ingrediente primeiro, ultimo, atual;
+    Ingrediente primeiro, ultimo, atual;
     String nome;
+    int tipo;
 
     // Constantes
     final int CEBOLA = 0;
@@ -18,7 +19,8 @@ public class Pizza {
 
     public Pizza(int p) {
         primeiro = ultimo = atual = null;
-        switch (p) {
+        this.tipo = p;
+        switch (this.tipo) {
             case 0:
                 nome = "vegetariana";
                 insere(new Ingrediente(BROCOLIS));
@@ -71,13 +73,60 @@ public class Pizza {
         }
     }
 
-    private void insere(Ingrediente i){
+    void insere(Ingrediente i){
         if (primeiro == null){
             primeiro = i;
             ultimo = i;
         } else {
             ultimo.proximo = i;
             ultimo = i;
+        }
+    }
+
+    int tamanho() {
+        int countI = 0;
+        this.atual = this.primeiro;
+        while (this.atual != null) {
+            this.atual = this.atual.proximo;
+            countI++;
+        }
+        return countI;
+    }
+
+    int buscaIngredinte(int tipo) {
+        int count = 0;
+        this.atual = this.primeiro;
+        while(this.atual != null && this.atual.tipo != tipo) {
+            this.atual = this.atual.proximo;
+            count ++;
+        }
+        if (this.atual != null)
+            return count;
+        return -1;
+    }
+
+    void moveParaPosicao(int pos) {
+        atual = primeiro;
+        for (int i=0; i<pos; i++) {
+            atual = atual.proximo;
+        }
+    }
+
+    void removePrimeiro() {
+        primeiro = primeiro.proximo;
+        if (primeiro == null)
+            ultimo = null;
+    }
+
+    void removeIngrediente(int tipo) {
+        int pos;
+        Ingrediente temp;
+        pos = buscaIngredinte(tipo);
+        if (pos > -1) {
+            temp = this.atual.proximo;
+            pos--;
+            moveParaPosicao(pos);
+            atual.proximo=temp;
         }
     }
 }

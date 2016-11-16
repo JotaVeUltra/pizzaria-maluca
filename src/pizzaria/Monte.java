@@ -6,8 +6,9 @@ public class Monte {
     Ficha topo = null;
 
     public Monte(){
-        int ficha1, ficha2, ficha3, ficha4, pilha = 20;
+        int ficha1, ficha2, ficha3, ficha4, pilha;
         ficha1 = ficha2 = ficha3 = ficha4 = 5;
+        pilha = 20;
         Random gerador = new Random();
         while (pilha > 0){
             int randint = gerador.nextInt(4);
@@ -44,8 +45,67 @@ public class Monte {
         }
     }
 
-    public void empilha(int v){
-        Ficha novo = new Ficha(v);
+    void sorteAzar(Jogador jogador){
+        int f = desempilha();
+        switch (f){
+            case Ficha.PERDE_INGREDIENTE:
+                perdeIngrediente(jogador);
+                break;
+            case Ficha.GANHA_DOIS_INGREDIENTES:
+                ganhaDoisIngredientes(jogador);
+                break;
+            case Ficha.RETIRE_DE_OUTRO_JOGADOR:
+                retiraDeOutroJogador(jogador);
+                break;
+            case Ficha.QUEIMAR_A_PIZZA:
+                queimarPizza(jogador);
+                break;
+        }
+    }
+
+    void perdeIngrediente(Jogador jogador) {
+        if (jogador.pizza.tamanho() != 5) {
+            if (jogador.pizza.tamanho() == 4) {
+                jogador.pizza = new Pizza(jogador.pizza.tipo);
+            } else {
+                Pizza tempPizza = new Pizza(jogador.pizza.tipo);
+                tempPizza.atual = tempPizza.primeiro;
+                while (tempPizza.atual != null) {
+                    jogador.pizza.atual = jogador.pizza.primeiro;
+                    boolean temIngredinte = true;
+                    while (jogador.pizza.atual != null) {
+                        if (jogador.pizza.atual.tipo == tempPizza.atual.tipo)
+                            temIngredinte = false;
+                        jogador.pizza.atual = jogador.pizza.atual.proximo;
+                    }
+                    if (!temIngredinte)
+                        tempPizza.atual = tempPizza.atual.proximo;
+                    else
+                        jogador.pizza.insere(tempPizza.atual);
+                        break;
+                }
+            }
+        }
+    }
+
+    void ganhaDoisIngredientes(Jogador jogador) {
+        if (jogador.pizza.primeiro != null) {
+            jogador.pizza.removePrimeiro();
+            if (jogador.pizza.primeiro != null)
+                jogador.pizza.removePrimeiro();
+        }
+    }
+
+    void retiraDeOutroJogador(Jogador jogador) {
+
+    }
+
+    void queimarPizza(Jogador jogador){
+        jogador.pizza = new Pizza(jogador.pizza.tipo);
+    }
+
+    public void empilha(int f){
+        Ficha novo = new Ficha(f);
         if(topo == null)
             topo = novo;
         else{
@@ -60,7 +120,7 @@ public class Monte {
         return retVal;
     }
 
-    boolean monteVazio(){
+    boolean estaVazio(){
         return this.topo == null;
     }
 }
