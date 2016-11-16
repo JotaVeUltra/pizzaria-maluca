@@ -1,5 +1,6 @@
 package pizzaria;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Monte {
@@ -49,15 +50,19 @@ public class Monte {
         int f = desempilha();
         switch (f){
             case Ficha.PERDE_INGREDIENTE:
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar eperdeu ingrediente");
                 perdeIngrediente(jogador);
                 break;
             case Ficha.GANHA_DOIS_INGREDIENTES:
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte e ganhou dois ingredientes");
                 ganhaDoisIngredientes(jogador);
                 break;
             case Ficha.RETIRE_DE_OUTRO_JOGADOR:
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve sorte e retirou ingredientes");
                 retiraDeOutroJogador(jogador);
                 break;
             case Ficha.QUEIMAR_A_PIZZA:
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" teve azar e queimou a pizza");
                 queimarPizza(jogador);
                 break;
         }
@@ -97,7 +102,19 @@ public class Monte {
     }
 
     void retiraDeOutroJogador(Jogador jogador) {
-
+        boolean retirou = false;
+        while (!retirou) {
+            String nome = JOptionPane.showInputDialog("De qual jogador deseja retirar ingredientes?");
+            Jogador tempJ = Principal.jogadores.primeiro;
+            for (int i = 0; i < Principal.numeroJogadores; i++) {
+                if (tempJ.nome.equalsIgnoreCase(nome)) {
+                    perdeIngrediente(tempJ);
+                    retirou = true;
+                    Principal.lblInfo.setText(Principal.lblInfo.getText()+" "+nome);
+                    break;
+                }
+            }
+        }
     }
 
     void queimarPizza(Jogador jogador){
