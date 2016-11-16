@@ -104,7 +104,7 @@ public class Principal extends Shell {
 
 			}
 		});
-		btnNovoJogo.setBounds(349, 10, 75, 25);
+		btnNovoJogo.setBounds(411, 8, 75, 25);
 		btnNovoJogo.setText("Novo Jogo");
 
 		txtJogador1 = new Text(this, SWT.BORDER);
@@ -134,23 +134,23 @@ public class Principal extends Shell {
 
 		txtIng1 = new Text(this, SWT.BORDER);
 		txtIng1.setEditable(false);
-		txtIng1.setBounds(79, 10, 264, 21);
+		txtIng1.setBounds(79, 10, 326, 21);
 
 		txtIng2 = new Text(this, SWT.BORDER);
 		txtIng2.setEditable(false);
-		txtIng2.setBounds(79, 37, 264, 21);
+		txtIng2.setBounds(79, 37, 326, 21);
 
 		txtIng4 = new Text(this, SWT.BORDER);
 		txtIng4.setEditable(false);
-		txtIng4.setBounds(79, 91, 264, 21);
+		txtIng4.setBounds(79, 91, 326, 21);
 
 		txtIng5 = new Text(this, SWT.BORDER);
 		txtIng5.setEditable(false);
-		txtIng5.setBounds(79, 118, 264, 21);
+		txtIng5.setBounds(79, 118, 326, 21);
 
 		txtIng3 = new Text(this, SWT.BORDER);
 		txtIng3.setEditable(false);
-		txtIng3.setBounds(79, 64, 264, 21);
+		txtIng3.setBounds(79, 64, 326, 21);
 
 		Button btnStart = new Button(this, SWT.NONE);
 		btnStart.addSelectionListener(new SelectionAdapter() {
@@ -161,43 +161,40 @@ public class Principal extends Shell {
 				txtJogador3.setEditable(false);
 				txtJogador4.setEditable(false);
 				txtJogador5.setEditable(false);
-				
+
 				jogadores = new Jogadores(numeroJogadores);
-                jogadores.atual = jogadores.primeiro;
-                preencheTexto();
+				jogadores.atual = jogadores.primeiro;
+				preencheTexto();
 			}
 		});
 		btnStart.setBounds(158, 189, 75, 25);
 		btnStart.setText("START");
-		
+
 		btnJogaDados = new Button(this, SWT.NONE);
 		btnJogaDados.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-                Random gerador = new Random();
-                pino = (pino+gerador.nextInt(6)) % 35;
-                tabuleiro.moveParaPosicao(pino);
-                if (tabuleiro.atual.tipo == tabuleiro.PERDE_TUDO) {
-                    jogadores.atual.pizza = new Pizza(jogadores.atual.pizza.tipo);
-                } else {
-                    if (tabuleiro.atual.tipo == tabuleiro.SORTE_AZAR) {
-                        monte.sorteAzar(jogadores.atual);
-                    } else {
-                        jogadores.atual.pizza.removeIngrediente(tabuleiro.atual.tipo);
-                    }
-                }
-                if (jogadores.atual.pizza.tamanho() == 0) {
-                    String str = jogadores.atual.nome  +" venceu!";
-                    JOptionPane.showMessageDialog(null, str);
-                }
-                if (monte.estaVazio()) {
-                        monte = new Monte();
-                }
-                jogadores.atual = jogadores.atual.proximo;
-                preencheTexto();
+				Random gerador = new Random();
+				pino = (pino + gerador.nextInt(6)) % 35;
+				tabuleiro.moveParaPosicao(pino);
+				if (tabuleiro.atual.tipo == tabuleiro.PERDE_TUDO) {
+					jogadores.atual.pizza = new Pizza(jogadores.atual.pizza.tipo);
+				} else {
+					if (tabuleiro.atual.tipo == tabuleiro.SORTE_AZAR) {
+						monte.sorteAzar(jogadores.atual);
+					} else {
+						jogadores.atual.pizza.removeIngrediente(tabuleiro.atual.tipo);
+					}
+				}
+				if (jogadores.atual.pizza.tamanho() == 0) {
+					String str = jogadores.atual.nome + " venceu!";
+					JOptionPane.showMessageDialog(null, str);
+				}
+				jogadores.atual = jogadores.atual.proximo;
+				preencheTexto();
 			}
 		});
-		btnJogaDados.setBounds(349, 37, 75, 25);
+		btnJogaDados.setBounds(411, 39, 75, 25);
 		btnJogaDados.setText("Joga Dados");
 		createContents();
 	}
@@ -207,32 +204,31 @@ public class Principal extends Shell {
 	 */
 	protected void createContents() {
 		setText("Pizzaria Maluca");
-		setSize(450, 300);
+		setSize(508, 300);
 
 	}
-	
+
 	public void preencheTexto() {
-        Jogador tempJ = jogadores.primeiro;
+		Jogador tempJ = jogadores.primeiro;
 		txtIng1.setText(tempJ.pizza.toString());
-        tempJ = tempJ.proximo;
-        txtIng2.setText(tempJ.pizza.toString());
-        if (numeroJogadores > 2) {
-            tempJ = tempJ.proximo;
-            txtIng3.setText(tempJ.pizza.toString());
-        }
-        if (numeroJogadores > 3) {
-            tempJ = tempJ.proximo;
-            txtIng4.setText(tempJ.pizza.toString());
-        }
-        if (numeroJogadores > 4) {
-            tempJ = tempJ.proximo;
-            txtIng5.setText(tempJ.pizza.toString());
-        }
+		tempJ = tempJ.proximo;
+		txtIng2.setText(tempJ.pizza.toString());
+		if (numeroJogadores > 2) {
+			tempJ = tempJ.proximo;
+			txtIng3.setText(tempJ.pizza.toString());
+		}
+		if (numeroJogadores > 3) {
+			tempJ = tempJ.proximo;
+			txtIng4.setText(tempJ.pizza.toString());
+		}
+		if (numeroJogadores > 4) {
+			tempJ = tempJ.proximo;
+			txtIng5.setText(tempJ.pizza.toString());
+		}
 	}
 
 	@Override
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components
 	}
-
 }
