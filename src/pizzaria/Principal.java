@@ -11,6 +11,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
 
 import java.util.Random;
+import org.eclipse.swt.widgets.Label;
 
 public class Principal extends Shell {
 
@@ -30,6 +31,7 @@ public class Principal extends Shell {
 	private Text txtIng4;
 	private Text txtIng5;
 	private Button btnJogaDados;
+	private Label lblNewLabel;
 
 	public static void main(String args[]) {
 		try {
@@ -104,7 +106,7 @@ public class Principal extends Shell {
 
 			}
 		});
-		btnNovoJogo.setBounds(411, 8, 75, 25);
+		btnNovoJogo.setBounds(411, 8, 95, 25);
 		btnNovoJogo.setText("Novo Jogo");
 
 		txtJogador1 = new Text(this, SWT.BORDER);
@@ -167,7 +169,7 @@ public class Principal extends Shell {
 				preencheTexto();
 			}
 		});
-		btnStart.setBounds(158, 189, 75, 25);
+		btnStart.setBounds(202, 185, 75, 25);
 		btnStart.setText("START");
 
 		btnJogaDados = new Button(this, SWT.NONE);
@@ -194,8 +196,13 @@ public class Principal extends Shell {
 				preencheTexto();
 			}
 		});
-		btnJogaDados.setBounds(411, 39, 75, 25);
+		btnJogaDados.setBounds(411, 39, 95, 25);
 		btnJogaDados.setText("Joga Dados");
+		
+		lblNewLabel = new Label(this, SWT.NONE);
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setBounds(10, 145, 476, 32);
+		lblNewLabel.setText("ASSIM?");
 		createContents();
 	}
 
@@ -204,7 +211,7 @@ public class Principal extends Shell {
 	 */
 	protected void createContents() {
 		setText("Pizzaria Maluca");
-		setSize(508, 300);
+		setSize(532, 300);
 
 	}
 
