@@ -27,6 +27,7 @@ public class Principal extends Shell {
 	private Text txtIng3;
 	private Text txtIng4;
 	private Text txtIng5;
+	private Button btnJogaDados;
 
 	public static void main(String args[]) {
 		try {
