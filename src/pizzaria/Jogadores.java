@@ -19,6 +19,7 @@ public class Jogadores {
         if (n > 4) {
             insere(new Jogador(Principal.txtJogador5.getText(), gerador.nextInt(6)));
         }
+        insere(primeiro);
     }
 
     private void insere(Jogador j){
