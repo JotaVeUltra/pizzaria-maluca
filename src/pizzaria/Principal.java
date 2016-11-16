@@ -192,7 +192,7 @@ public class Principal extends Shell {
                 preencheTexto();
             }
         });
-        btnJogaDados.setBounds(411, 39, 95, 25);
+        btnJogaDados.setBounds(526, 39, 95, 25);
         btnJogaDados.setText("Joga Dados");
         btnJogaDados.setVisible(false);
 
