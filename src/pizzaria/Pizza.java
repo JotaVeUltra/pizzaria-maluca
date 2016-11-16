@@ -129,4 +129,45 @@ public class Pizza {
             atual.proximo=temp;
         }
     }
+
+    @Override
+    public String toString() {
+        String string = this.nome+": ";
+        atual = primeiro;
+        while (atual != null) {
+            switch (atual.tipo) {
+                case CEBOLA:
+                    string += "Cebola, ";
+                    break;
+                case BROCOLIS:
+                    string += "Brócolis, ";
+                    break;
+                case QUEIJO:
+                    string += "Queijo, ";
+                    break;
+                case CALABRESA:
+                    string += "Calabresa, ";
+                    break;
+                case TOMATE:
+                    string += "Tomate, ";
+                    break;
+                case OVO:
+                    string += "Ovo, ";
+                    break;
+                case PRESUNTO:
+                    string += "Presunto, ";
+                    break;
+                case AZEITONA:
+                    string += "Azeitona, ";
+                    break;
+                case MILHO:
+                    string += "Milho, ";
+                    break;
+                case ERVILHA:
+                    string += "Ervilha, ";
+                    break;
+            }
+        }
+        return string;
+    }
 }
