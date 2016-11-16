@@ -104,7 +104,10 @@ public class Monte {
     void retiraDeOutroJogador(Jogador jogador) {
         boolean retirou = false;
         while (!retirou) {
-            String nome = JOptionPane.showInputDialog(jogador.nome+", de qual jogador deseja retirar ingredientes?");
+            String nome = "";
+            while (nome.equalsIgnoreCase(jogador.nome) || nome.equals("")) {
+                nome = JOptionPane.showInputDialog(jogador.nome + ", de qual jogador deseja retirar ingredientes?");
+            }
             Jogador tempJ = Principal.jogadores.primeiro;
             for (int i = 0; i < Principal.numeroJogadores; i++) {
                 if (tempJ.nome.equalsIgnoreCase(nome)) {
