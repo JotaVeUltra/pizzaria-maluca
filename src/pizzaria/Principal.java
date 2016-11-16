@@ -164,6 +164,16 @@ public class Principal extends Shell {
 		});
 		btnStart.setBounds(158, 189, 75, 25);
 		btnStart.setText("START");
+		
+		btnJogaDados = new Button(this, SWT.NONE);
+		btnJogaDados.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+			}
+		});
+		btnJogaDados.setBounds(349, 37, 75, 25);
+		btnJogaDados.setText("Joga Dados");
 		createContents();
 	}
 
