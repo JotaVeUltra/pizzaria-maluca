@@ -46,6 +46,9 @@ public class Principal extends Shell {
                         txtJogador1.setText("");
                         txtJogador2.setEditable(true);
                         txtJogador2.setText("");
+                        txtJogador3.setVisible(false);
+                        txtJogador4.setVisible(false);
+                        txtJogador5.setVisible(false);
                         numeroJogadores = 2;
                     }
                     if (nj == 3) {
@@ -55,6 +58,9 @@ public class Principal extends Shell {
                         txtJogador2.setText("");
                         txtJogador3.setEditable(true);
                         txtJogador3.setText("");
+                        txtJogador3.setVisible(true);
+                        txtJogador4.setVisible(false);
+                        txtJogador5.setVisible(false);
                         numeroJogadores = 3;
                     }
                     if (nj == 4) {
@@ -64,8 +70,11 @@ public class Principal extends Shell {
                         txtJogador2.setText("");
                         txtJogador3.setEditable(true);
                         txtJogador3.setText("");
+                        txtJogador3.setVisible(true);
                         txtJogador4.setEditable(true);
                         txtJogador4.setText("");
+                        txtJogador4.setVisible(true);
+                        txtJogador5.setVisible(false);
                         numeroJogadores = 4;
                     }
                     if (nj == 5) {
@@ -75,10 +84,13 @@ public class Principal extends Shell {
                         txtJogador2.setText("");
                         txtJogador3.setEditable(true);
                         txtJogador3.setText("");
+                        txtJogador3.setVisible(true);
                         txtJogador4.setEditable(true);
                         txtJogador4.setText("");
+                        txtJogador4.setVisible(true);
                         txtJogador5.setEditable(true);
                         txtJogador5.setText("");
+                        txtJogador5.setVisible(true);
                         numeroJogadores = 5;
                     }
                     lblInfo.setText("Insira o nome dos jogaderes nos campos vazios");
