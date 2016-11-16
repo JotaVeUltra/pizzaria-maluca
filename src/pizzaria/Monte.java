@@ -86,7 +86,7 @@ public class Monte {
                     if (!temIngredinte)
                         tempPizza.atual = tempPizza.atual.proximo;
                     else
-                        jogador.pizza.insere(tempPizza.atual);
+                        jogador.pizza.insere(new Ingrediente(tempPizza.atual.tipo));
                         break;
                 }
             }
@@ -112,8 +112,9 @@ public class Monte {
                     retirou = true;
                     Principal.lblInfo.setText(Principal.lblInfo.getText()+" "+nome);
                     break;
+                } else {
+                    tempJ = tempJ.proximo;
                 }
-                tempJ = tempJ.proximo;
             }
         }
     }

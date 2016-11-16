@@ -167,7 +167,7 @@ public class Principal extends Shell {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Random gerador = new Random();
-                pino = (pino + gerador.nextInt(6)) % 35;
+                pino = (pino + gerador.nextInt(6) + 1) % 35;
                 tabuleiro.moveParaPosicao(pino);
                 lblInfo.setText(jogadores.atual.nome);
                 if (tabuleiro.atual.tipo == tabuleiro.PERDE_TUDO) {
