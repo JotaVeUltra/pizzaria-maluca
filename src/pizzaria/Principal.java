@@ -44,11 +44,6 @@ public class Principal extends Shell {
 		}
 	}
 
-	/**
-	 * Create the shell.
-	 * 
-	 * @param display
-	 */
 	public Principal(Display display) {
 		super(display, SWT.SHELL_TRIM);
 
@@ -58,7 +53,7 @@ public class Principal extends Shell {
 			public void widgetSelected(SelectionEvent e) {
 				int nj = 0;
 				while (nj < 2 || nj > 5) {
-					nj = Integer.parseInt(JOptionPane.showInputDialog("Informe numeroJogadores quantidade de jogadores 2-5"));
+					nj = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de jogadores 2-5"));
 				}
 				if (nj == 2) {
 					txtJogador1.setEditable(true);

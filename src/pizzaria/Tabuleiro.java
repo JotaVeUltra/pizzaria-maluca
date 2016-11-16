@@ -69,7 +69,7 @@ public class Tabuleiro {
         }
     }
 
-    // Move para numeroJogadores posição indicada
+    // Move para a posição indicada
     public void moveParaPosicao(int pos) {
         atual = primeiro;
         for (int i=0; i<pos; i++) {
