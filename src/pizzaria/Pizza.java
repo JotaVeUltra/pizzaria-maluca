@@ -122,14 +122,18 @@ public class Pizza {
         int pos;
         Ingrediente temp;
         pos = buscaIngredinte(tipo);
-        if (pos > -1) {
-            temp = this.atual.proximo;
-            pos--;
-            moveParaPosicao(pos);
-            atual.proximo=temp;
-            Principal.lblInfo.setText(Principal.lblInfo.getText()+" ganhou um ingrediente");
+        if (pos == 0) {
+            this.primeiro = this.primeiro.proximo;
         } else {
-            Principal.lblInfo.setText(Principal.lblInfo.getText()+" não ganhou o ingrediente");
+            if (pos > -1) {
+                temp = this.atual.proximo;
+                pos--;
+                moveParaPosicao(pos);
+                atual.proximo=temp;
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" ganhou um ingrediente");
+            } else {
+                Principal.lblInfo.setText(Principal.lblInfo.getText()+" não ganhou o ingrediente");
+            }
         }
     }
 

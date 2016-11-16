@@ -83,11 +83,12 @@ public class Monte {
                             temIngredinte = false;
                         jogador.pizza.atual = jogador.pizza.atual.proximo;
                     }
-                    if (!temIngredinte)
+                    if (!temIngredinte) {
                         tempPizza.atual = tempPizza.atual.proximo;
-                    else
+                    } else {
                         jogador.pizza.insere(new Ingrediente(tempPizza.atual.tipo));
                         break;
+                    }
                 }
             }
         }
