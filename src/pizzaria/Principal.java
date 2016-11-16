@@ -190,6 +190,9 @@ public class Principal extends Shell {
                     String str = jogadores.atual.nome  +" venceu!";
                     JOptionPane.showMessageDialog(null, str);
                 }
+                if (monte.estaVazio()) {
+                        monte = new Monte();
+                }
                 jogadores.atual = jogadores.atual.proximo;
                 preencheTexto();
 			}
