@@ -88,53 +88,53 @@ public class Principal extends Shell {
                 }
             }
         });
-        btnNovoJogo.setBounds(411, 8, 95, 25);
+        btnNovoJogo.setBounds(526, 8, 95, 25);
         btnNovoJogo.setText("Novo Jogo");
 
         txtJogador1 = new Text(this, SWT.BORDER);
         txtJogador1.setEditable(false);
         txtJogador1.setText("Jogador 1");
-        txtJogador1.setBounds(10, 10, 63, 21);
+        txtJogador1.setBounds(10, 10, 75, 21);
 
         txtJogador2 = new Text(this, SWT.BORDER);
         txtJogador2.setEditable(false);
         txtJogador2.setText("Jogador 2");
-        txtJogador2.setBounds(10, 37, 63, 21);
+        txtJogador2.setBounds(10, 37, 75, 21);
 
         txtJogador3 = new Text(this, SWT.BORDER);
         txtJogador3.setEditable(false);
         txtJogador3.setText("Jogador 3");
-        txtJogador3.setBounds(10, 64, 63, 21);
+        txtJogador3.setBounds(10, 64, 75, 21);
 
         txtJogador4 = new Text(this, SWT.BORDER);
         txtJogador4.setEditable(false);
         txtJogador4.setText("Jogador 4");
-        txtJogador4.setBounds(10, 91, 63, 21);
+        txtJogador4.setBounds(10, 91, 75, 21);
 
         txtJogador5 = new Text(this, SWT.BORDER);
         txtJogador5.setEditable(false);
         txtJogador5.setText("Jogador 5");
-        txtJogador5.setBounds(10, 118, 63, 21);
+        txtJogador5.setBounds(10, 118, 75, 21);
 
         txtIng1 = new Text(this, SWT.BORDER);
         txtIng1.setEditable(false);
-        txtIng1.setBounds(79, 10, 326, 21);
+        txtIng1.setBounds(91, 10, 420, 21);
 
         txtIng2 = new Text(this, SWT.BORDER);
         txtIng2.setEditable(false);
-        txtIng2.setBounds(79, 37, 326, 21);
+        txtIng2.setBounds(91, 37, 420, 21);
 
         txtIng4 = new Text(this, SWT.BORDER);
         txtIng4.setEditable(false);
-        txtIng4.setBounds(79, 91, 326, 21);
+        txtIng4.setBounds(91, 91, 420, 21);
 
         txtIng5 = new Text(this, SWT.BORDER);
         txtIng5.setEditable(false);
-        txtIng5.setBounds(79, 118, 326, 21);
+        txtIng5.setBounds(91, 118, 420, 21);
 
         txtIng3 = new Text(this, SWT.BORDER);
         txtIng3.setEditable(false);
-        txtIng3.setBounds(79, 64, 326, 21);
+        txtIng3.setBounds(91, 64, 420, 21);
 
         btnStart = new Button(this, SWT.NONE);
         btnStart.addSelectionListener(new SelectionAdapter() {
@@ -221,7 +221,7 @@ public class Principal extends Shell {
 
     protected void createContents() {
         setText("Pizzaria Maluca");
-        setSize(532, 300);
+        setSize(647, 300);
 
     }
 
