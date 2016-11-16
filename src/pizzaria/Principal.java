@@ -10,6 +10,8 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
 
+import java.util.Random;
+
 public class Principal extends Shell {
 
 	static Jogadores jogadores;
@@ -161,6 +163,7 @@ public class Principal extends Shell {
 				txtJogador5.setEditable(false);
 				
 				jogadores = new Jogadores(numeroJogadores);
+                jogadores.atual = jogadores.primeiro;
 			}
 		});
 		btnStart.setBounds(158, 189, 75, 25);
@@ -170,7 +173,19 @@ public class Principal extends Shell {
 		btnJogaDados.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
+                Random gerador = new Random();
+                pino = (pino+gerador.nextInt(6)) % 35;
+                tabuleiro.moveParaPosicao(pino);
+                if (tabuleiro.atual.tipo == tabuleiro.PERDE_TUDO) {
+                    jogadores.atual.pizza = new Pizza(jogadores.atual.pizza.tipo);
+                } else {
+                    if (tabuleiro.atual.tipo == tabuleiro.SORTE_AZAR) {
+                        monte.sorteAzar(jogadores.atual);
+                    } else {
+                        jogadores.atual.pizza.removeIngrediente(tabuleiro.atual.tipo);
+                    }
+                }
+                jogadores.atual = jogadores.atual.proximo;
 			}
 		});
 		btnJogaDados.setBounds(349, 37, 75, 25);
