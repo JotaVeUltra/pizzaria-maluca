@@ -201,6 +201,11 @@ public class Principal extends Shell {
 		setSize(450, 300);
 
 	}
+	
+	public void preencheTexto(Jogador jogador) {
+		jogador.pizza = new Pizza(jogador.pizza.tipo);
+		txtIng1.setText(jogador.pizza.toString());
+	}
 
 	@Override
 	protected void checkSubclass() {
