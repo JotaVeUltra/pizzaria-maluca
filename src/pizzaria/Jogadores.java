@@ -1,6 +1,5 @@
 package pizzaria;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class Jogadores {
@@ -9,9 +8,16 @@ public class Jogadores {
     Jogadores(int n){
         primeiro = ultimo = atual = null;
         Random gerador = new Random();
-        for (int i = 0; i < n; i++) {
-            int pizza = gerador.nextInt(6);
-            insere(new Jogador(JOptionPane.showInputDialog("Nome"), pizza));
+        insere(new Jogador(Principal.txtJogador1.getText(), gerador.nextInt(6)));
+        insere(new Jogador(Principal.txtJogador2.getText(), gerador.nextInt(6)));
+        if (n > 2) {
+            insere(new Jogador(Principal.txtJogador3.getText(), gerador.nextInt(6)));
+        }
+        if (n > 3) {
+            insere(new Jogador(Principal.txtJogador4.getText(), gerador.nextInt(6)));
+        }
+        if (n > 4) {
+            insere(new Jogador(Principal.txtJogador5.getText(), gerador.nextInt(6)));
         }
     }
 
