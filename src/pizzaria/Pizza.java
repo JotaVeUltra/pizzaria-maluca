@@ -167,6 +167,7 @@ public class Pizza {
                     string += "Ervilha, ";
                     break;
             }
+            atual = atual.proximo;
         }
         return string;
     }
