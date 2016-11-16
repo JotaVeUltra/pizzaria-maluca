@@ -178,7 +178,6 @@ public class Principal extends Shell {
                         monte.sorteAzar(jogadores.atual);
                     } else {
                         jogadores.atual.pizza.removeIngrediente(tabuleiro.atual.tipo);
-                        Principal.lblInfo.setText(Principal.lblInfo.getText()+" ganhou um ingrediente");
                     }
                 }
                 if (jogadores.atual.pizza.tamanho() == 0) {

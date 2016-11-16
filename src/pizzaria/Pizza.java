@@ -127,6 +127,9 @@ public class Pizza {
             pos--;
             moveParaPosicao(pos);
             atual.proximo=temp;
+            Principal.lblInfo.setText(Principal.lblInfo.getText()+" ganhou um ingrediente");
+        } else {
+            Principal.lblInfo.setText(Principal.lblInfo.getText()+" não ganhou o ingrediente");
         }
     }
 
